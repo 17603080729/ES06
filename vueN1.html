@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <header :style="ht">
+            <h2 :style={verticalAlign:yAlign,display:dis}>{{msg}}</h2>
+        </header>
+        <div :style="mid"></div>
+        <footer :style="ht">
+            <p :style={verticalAlign:yAlign,display:dis} v-once>{{msg}}</p>
+        </footer>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        data() {return { h1:60,h2:0,msg:"",xAlign:"center",yAlign:"middle",dis:"inline-block"}},
+        computed: {
+            ht(){return{height:this.h1+"px",background:"#D9C666",textAlign:this.xAlign}},
+            mid(){return{height:this.h2-this.h1*2+"px",background:"#ddd"}},
+        },
+        created () {
+            this.msg="广东松山职业技术学院";
+            this.h2=window.innerHeight;
+            window.onresize = ()=>this.h2=window.innerHeight
+        }
+    }).$mount("#app");
+</script>
+</html>

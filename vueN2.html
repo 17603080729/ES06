@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <template v-if="type==1">
+            <label>用户名</label>
+            <input placeholder="输入用户名" key=1>
+        </template>
+        <template v-else-if="type==2">
+            <label>邮箱</label>
+            <input placeholder="输入邮箱" key=2>
+        </template>
+        <template v-else>
+            <label>QQ</label>
+            <input placeholder="输入QQ" key=3>
+        </template>
+        <button @click=change>切换<tton>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        data() { return { type: 2 }},
+        methods: {
+            change() {
+                this.type = this.type == 3 ? 1 : ++this.type
+            }
+        }
+    }).$mount("#app");
+</script>
+<html>

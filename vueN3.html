@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="js/vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for="stu in Students">
+                {{stu.sName}}
+                <span v-if="Math.random()>=0.6">,进入下一论</span>
+                <span v-show="Math.random()>=0.8">,获得公平竞赛奖</span>
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    var vm = new Vue({
+        data() {
+            return {
+                Students: [{ sName: '王志英'},{ sName:'刘晓华'},{ sName:"李丽娜"}]
+            }
+        }
+    }).$mount("#app");
+</script>
+</html>
